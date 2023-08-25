@@ -63,16 +63,16 @@ function App() {
 				const data = await (await fetch("/api/")).json();
 				let temp_leaderboard = {};
 				let temp_total = {};
-				let temp_category_totals = {};
+// 				let temp_category_totals = {};
 				for (const event_category of categories) {
 					temp_leaderboard[event_category] = [];
-					temp_category_totals[event_category] = {};
+// 					temp_category_totals[event_category] = {};
 				}
 				for (const pool of pools) {
 					temp_total[pool] = 0;
-					for (const event_category of categories) {
-						temp_category_totals[event_category][pool] = 0;
-					}
+// 					for (const event_category of categories) {
+// 						temp_category_totals[event_category][pool] = 0;
+// 					}
 				}
 				for (const event of data) {
 					temp_leaderboard[event.eventcategory].push({
@@ -83,17 +83,17 @@ function App() {
 					});
 					for (const pool of pools) {
 						temp_total[pool] += event.poolpoints[pool];
-						temp_category_totals[event.eventcategory][pool] += event.poolpoints[pool];
+// 						temp_category_totals[event.eventcategory][pool] += event.poolpoints[pool];
 					}
 				}
-				for (const event_category of categories) {
-					temp_leaderboard[event_category].push({
-						_id: "",
-						eventname: "Total",
-						poolpoints: temp_category_totals[event_category],
-						link: ""
-					})
-				}
+// 				for (const event_category of categories) {
+// 					temp_leaderboard[event_category].push({
+// 						_id: "",
+// 						eventname: "Total",
+// 						poolpoints: temp_category_totals[event_category],
+// 						link: ""
+// 					})
+// 				}
 				setLeaderboard({
 					categories: categories,
 					pools: pools,
@@ -119,21 +119,21 @@ function App() {
 	else return (
 		<div className="main">
 		<h2>SnT Council</h2>
-		<h1>Takneek</h1> 
+		<h1>T   a   k   n   e   e   k</h1> 
 		<Container>
 			<Row className="table-head">
-				<Col sm={12} md={3}>Problem Statement</Col>
-				<Col sm={12} md={9}>
+				<Col sm={12} md={4}>Problem Statement</Col>
+				<Col sm={12} md={8}>
 				<Row style={{padding:0}}>
 				{leaderboard.pools.map((el, index) => (
-					<Col style={{padding: 0}} xs={{offset: (index === 0 ? 2 : 0)}} sm={{offset: (index === 0 ? 2 : 0)}} md={{offset: 0}}>{el}</Col>
+					<Col style={{padding: 0}} xs={{offset: (index === 0 ? 3 : 0)}} sm={{offset: (index === 0 ? 3 : 0)}} md={{offset: 0}}>{el}</Col>
 				))}
 				</Row>
 				</Col>
 			</Row>
 			{leaderboard.categories.map(event_category => (
 				<Row>
-					<Col sm={12} md={1}>{event_category}</Col>
+					<Col sm={12} md={1} style={{textAlign:"center"}}>{event_category}</Col>
 					<Col sm={12} md={11} style={{padding: 0}}>
 						<Container style={{width: "100%"}}>
 							{leaderboard.leaderboard[event_category].map(event => (
@@ -163,10 +163,10 @@ function App() {
 				</Row>
 			))}
 			<Row>
-				<Col sm={12} md={3}>Total</Col>
-				<Col sm={12} md={9} style={{padding:0}}>
+				<Col sm={12} md={4}>Total</Col>
+				<Col sm={12} md={8} style={{padding:0}}>
 				<Row style={{padding:0}}>
-				{Object.entries(leaderboard.total).map((el, index) => <Col xs={{offset: (index === 0 ? 2 : 0)}} sm={{offset: (index === 0 ? 2 : 0)}} md={{offset: 0}}>{el[1]}</Col>)}
+				{Object.entries(leaderboard.total).map((el, index) => <Col xs={{offset: (index === 0 ? 3 : 0)}} sm={{offset: (index === 0 ? 3 : 0)}} md={{offset: 0}}>{el[1]}</Col>)}
 				</Row></Col>
 			</Row>
 		</Container>
@@ -184,7 +184,7 @@ function App() {
 		<p>Add event:</p>
 		<Container>
 			<Row>
-				<Col sm={3}><Form.Group>
+				<Col sm={2}><Form.Group>
 					<Form.Label >P.S. Category</Form.Label>
 					<Form.Select value={formData.eventcategory} onChange={(event) => {setFormData({...formData, eventcategory:event.target.value})}}>
 						<option value=""></option>
@@ -194,14 +194,14 @@ function App() {
 					</Form.Select>
 				</Form.Group></Col>
 				
-				<Col sm={4}><Form.Group>
+				<Col sm={2}><Form.Group>
 					<Form.Label>P.S. Name</Form.Label>
 					<Form.Control type="text" placeholder="" value={formData.eventname} onChange={(event) => {setFormData({...formData, eventname: event.target.value})}}/>
 				</Form.Group></Col>
 				
 				{leaderboard.pools.map(el => (
-				<Col sm={1}><Form.Group>
-					<Form.Label>{el} Points</Form.Label>
+				<Col><Form.Group>
+					<Form.Label>{el}</Form.Label>
 					<Form.Control type="number" placeholder="" value={formData.poolpoints[el]} onChange={(event) => {
 					let newpoolpoints = formData.poolpoints;
 					newpoolpoints[el] = event.target.value
@@ -239,7 +239,7 @@ function App() {
 		<Container>
 			<Row>
 			
-				<Col sm={1}><Form.Group>
+				<Col sm={2}><Form.Group>
 					<Form.Label >P.S. Category</Form.Label>
 					<Form.Select value={editSelected.eventcategory} onChange={(event) => {setEditSelected({...editSelected, eventcategory:event.target.value})}}>
 						<option value=""></option>
@@ -249,14 +249,14 @@ function App() {
 					</Form.Select>
 				</Form.Group></Col>
 				
-				<Col sm={1}><Form.Group>
+				<Col sm={2}><Form.Group>
 					<Form.Label>P.S. Name</Form.Label>
 					<Form.Control type="text" placeholder="" value={editSelected.eventname} onChange={(event) => {setEditSelected({...editSelected, eventname: event.target.value})}}/>
 				</Form.Group></Col>
 				
 				{leaderboard.pools.map(el => (
 				<Col><Form.Group>
-					<Form.Label>{el} Points</Form.Label>
+					<Form.Label>{el}</Form.Label>
 					<Form.Control type="number" placeholder="" value={editSelected.poolpoints[el]} onChange={(event) => {
 					let newpoolpoints = editSelected.poolpoints;
 					newpoolpoints[el] = event.target.value
@@ -302,7 +302,7 @@ function App() {
 		<Container>
 			<Row>
 			
-				<Col sm={1}><Form.Group>
+				<Col sm={2}><Form.Group>
 					<Form.Label >P.S. Category</Form.Label>
 					<Form.Select value={delSelected.eventcategory}>
 						<option value=""></option>
@@ -312,14 +312,14 @@ function App() {
 					</Form.Select>
 				</Form.Group></Col>
 				
-				<Col sm={1}><Form.Group>
+				<Col sm={2}><Form.Group>
 					<Form.Label>P.S. Name</Form.Label>
 					<Form.Control type="text" placeholder="" value={delSelected.eventname} />
 				</Form.Group></Col>
 				
 				{leaderboard.pools.map(el => (
 				<Col><Form.Group>
-					<Form.Label>{el} Points</Form.Label>
+					<Form.Label>{el}</Form.Label>
 					<Form.Control type="number" placeholder="" value={delSelected.poolpoints[el]} />
 				</Form.Group></Col>))}
 				

@@ -1,3 +1,8 @@
+@font-face {
+	font-family: "Teko";
+	src: url("https://fonts.gstatic.com/s/teko/v20/LYjYdG7kmE0gV69VVPPdFl06VN8XG4S11zWmu1CET6g.woff") format('woff');
+}
+
 * {
 	--border-size: 1px;
 	--border-radius: 5px;
@@ -5,25 +10,25 @@
 	--background-color-dark: #021826;
 	--background-color-light: #04212f;
 	font-variant-caps: small-caps;
-	font-family:sans-serif;
+	font-family:"Teko";
 	color:white;
 /* 	border: solid #fff 1px !important; */
 }
 
 
 :root {
-	font-size: 12pt;
+	font-size: 20pt;
 }
 
 @media (max-width: 1200px) {
 	:root {
-		font-size: 10pt;
+		font-size: 18pt;
 	}
 }
 
 @media (max-width: 1000px) {
 	:root {
-		font-size: 9pt;
+		font-size: 16pt;
 	}
 }
 
@@ -65,7 +70,9 @@ a {
 .main h1 {
 	color:#0ff;
 	text-align:center;
-/* 	font-family:"BankGothic"; */
+	font-variant-caps: normal;
+	text-transform: uppercase;
+	filter: drop-shadow(0px 0px 5px #0ff);
 }
 
 .container {
@@ -82,8 +89,8 @@ a {
 }
 
 .row-head {
-	max-width: 18% !important;
-	flex-basis: 18% !important;
+	max-width: 27.3% !important;
+	flex-basis: 27.3% !important;
 	flex-grow: 0 !important;
 }
 
@@ -136,9 +143,23 @@ a {
 	font-variant-caps: small-caps;
 }
 
+/* 
+.main > .container > .row > *:first-child {
+	border-right-width: var(--border-size);
+	border-right-color: var(--border-color);
+	border-right-style: solid;
+}
+ */
+
 .table-head div {
 	color:#f0f !important;
 }
+
+/* 
+.table-head * {
+	border: none !important;
+}
+ */
 
 .main > .container > .row:first-child > div {
 	color:#f0f;
