@@ -12,18 +12,18 @@
 
 
 :root {
-	font-size: 14pt;
+	font-size: 12pt;
 }
 
 @media (max-width: 1200px) {
 	:root {
-		font-size: 12pt;
+		font-size: 10pt;
 	}
 }
 
 @media (max-width: 1000px) {
 	:root {
-		font-size: 10pt;
+		font-size: 9pt;
 	}
 }
 
@@ -106,6 +106,9 @@ a {
  */
 }
 
+.col {
+	text-align: center;
+}
 
 .row .row {
 	border: none;

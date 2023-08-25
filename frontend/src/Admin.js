@@ -148,7 +148,7 @@ function App() {
 											...empty
 										} : {...event, eventcategory:event_category}));
 										console.log((event._id === "" ? {} : event))}}>
-									<Col className="row-head">
+									<Col className="row-head" style={{textAlign:"left"}}>
 									{event.link === "" 
 									? event.eventname 
 									: (<a href={event.link} target="_blank" rel="noreferrer">{event.eventname}</a>)}
@@ -184,7 +184,7 @@ function App() {
 		<p>Add event:</p>
 		<Container>
 			<Row>
-				<Col sm={1}><Form.Group>
+				<Col sm={3}><Form.Group>
 					<Form.Label >P.S. Category</Form.Label>
 					<Form.Select value={formData.eventcategory} onChange={(event) => {setFormData({...formData, eventcategory:event.target.value})}}>
 						<option value=""></option>
@@ -194,13 +194,13 @@ function App() {
 					</Form.Select>
 				</Form.Group></Col>
 				
-				<Col sm={1}><Form.Group>
+				<Col sm={4}><Form.Group>
 					<Form.Label>P.S. Name</Form.Label>
 					<Form.Control type="text" placeholder="" value={formData.eventname} onChange={(event) => {setFormData({...formData, eventname: event.target.value})}}/>
 				</Form.Group></Col>
 				
 				{leaderboard.pools.map(el => (
-				<Col><Form.Group>
+				<Col sm={1}><Form.Group>
 					<Form.Label>{el} Points</Form.Label>
 					<Form.Control type="number" placeholder="" value={formData.poolpoints[el]} onChange={(event) => {
 					let newpoolpoints = formData.poolpoints;
