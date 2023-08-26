@@ -47,8 +47,7 @@ const eventSchema = new mongoose.Schema({
 		Peshwas: {type:Number, required: true},
 	},
 	link: {
-		type: String, 
-		match: /^http(s)?:\/\/[a-zA-Z0-9.\/\-\?\&\=()]+$/,
+		type: String,
 		required: false
 	},
 	resultreleased: {
