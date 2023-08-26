@@ -48,7 +48,7 @@ const eventSchema = new mongoose.Schema({
 	},
 	link: {
 		type: String, 
-		match: /^http(s)?:\/\/[a-zA-Z0-9.\/-]+$/,
+		match: /^http(s)?:\/\/[a-zA-Z0-9.\/\-\?\&\=()]+$/,
 		required: false
 	},
 	resultreleased: {
