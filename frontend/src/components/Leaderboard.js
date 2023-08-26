@@ -109,7 +109,7 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 		<h2>Leaderboard</h2>
 		<Container>
 			<Row className="table-head">
-				<Col sm={12} md={4}>Problem Statement</Col>
+				<Col sm={{offset: 0, span: 12}} md={{ offset: 1, span: 3}} style={{paddingLeft: "7.2%"}}>Problem Statement</Col>
 				<Col sm={12} md={8}>
 				<Row style={{padding:0}}>
 				{leaderboard.pools.map((el, index) => (
@@ -120,7 +120,7 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 			</Row>
 			{leaderboard.categories.map(event_category => (
 				<Row>
-					<Col sm={12} md={1} style={{textAlign:"center"}}>{event_category}</Col>
+					<Col sm={12} md={1} style={{textAlign:"center", color: "#f0f"}}>{event_category}</Col>
 					<Col sm={12} md={11} style={{padding: 0}}>
 						<Container style={{width: "100%"}}>
 							{leaderboard.leaderboard[event_category].map(event => (
@@ -135,7 +135,7 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 											...empty
 										} : {...event, eventcategory:event_category}));
 										console.log((event._id === "" ? {} : event))}}>
-									<Col className="row-head" style={{textAlign:"left"}}>
+									<Col className="row-head" style={{textAlign:"center"}}>
 									{event.link === "" 
 									? event.eventname 
 									: (<a href={event.link} target="_blank" rel="noreferrer">{event.eventname}</a>)}
@@ -150,7 +150,7 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 				</Row>
 			))}
 			<Row>
-				<Col sm={12} md={4}>Total</Col>
+				<Col sm={{offset: 0, span:12}} md={{offset: 1, span: 3}} style={{textAlign: "center", color: "#f0f"}}>Total</Col>
 				<Col sm={12} md={8} style={{padding:0}}>
 				<Row style={{padding:0}}>
 				{Object.entries(leaderboard.total).map((el, index) => <Col xs={{offset: (index === 0 ? 3 : 0)}} sm={{offset: (index === 0 ? 3 : 0)}} md={{offset: 0}}>{el[1]}</Col>)}
