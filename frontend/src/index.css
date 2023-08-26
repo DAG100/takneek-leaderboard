@@ -6,10 +6,12 @@
 * {
 	--border-size: 1px;
 	--border-radius: 5px;
-	--border-color: #0ff;
+	--border-color: #0ee;
+	--text-color: #ddd;
 	--background-color-dark: #021826;
 	--background-color-light: #04212f;
-	--border-color-2: #ee0;
+	--border-color-2: #ff0;
+	--text-color-2: #fff;
 	--background-color-2-dark: #220;
 	font-variant-caps: small-caps;
 	font-family:"Teko";
@@ -39,17 +41,17 @@ body {
 }
 
 div {
-	color: var(--border-color);
+	color: var(--text-color);
 }
 
 a {
-	color: var(--border-color) !important;
+	color: var(--text-color) !important;
 }
 
 .btn {
 	background-color: var(--background-color-dark) !important;
 	border-color: var(--border-color) !important;
-	color: var(--border-color) !important;
+	color: var(--text-color) !important;
 }
 
 .main {
@@ -65,16 +67,16 @@ a {
 }
 
 .main h2 {
-	color:var(--border-color);
+	color:var(--text-color-2);
 	text-align:center;
 }
 
 .main h1 {
-	color:var(--border-color);
+	color:var(--text-color-2);
 	text-align:center;
 	font-variant-caps: normal;
 	text-transform: uppercase;
-	filter: drop-shadow(0px 0px 5px var(--border-color));
+	filter: drop-shadow(0px 0px 5px var(--text-color-2));
 }
 
 .container {
@@ -106,7 +108,7 @@ a {
 	border-color: var(--border-color);
 	border-width: var(--border-size);
  	border-radius: var(--border-radius);
- 	color:var(--border-color);
+ 	color:var(--text-color);
  	margin: 15px;
 /* 
 	border-left: none;
@@ -120,7 +122,7 @@ a {
 }
 
 .ps-category {
-	color: var(--border-color-2);
+	color: var(--text-color-2);
 }
 
 .row .row {
@@ -158,7 +160,7 @@ a {
  */
 
 .table-head div {
-	color:var(--border-color-2) !important;
+	color:var(--text-color-2) !important;
 }
 
 /* 
@@ -168,5 +170,5 @@ a {
  */
 
 .main > .container > .row:first-child > div {
-	color: var(--border-color-2);
+	color: var(--text-color-2);
 }
