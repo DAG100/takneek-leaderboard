@@ -20,7 +20,8 @@ function App() {
 			Peshwas: 0,
 			Shauryas: 0
 		},
-		link: ""
+		link: "",
+		resultreleased: false
 	}
 	const [refresh, setRefresh] = useState(false); //toggle for refreshing
 	const [leaderboard, setLeaderboard] = useState("error");
@@ -128,10 +129,10 @@ function App() {
 			<Row>
 				<Col sm={2}><Form.Group>
 					<Form.Label >P.S. Category</Form.Label>
-					<Form.Select value={formData.eventcategory} onChange={(event) => {setFormData({...formData, eventcategory:event.target.value})}}>
-						<option value=""></option>
+					<Form.Select style={{color:"black"}} value={formData.eventcategory} onChange={(event) => {setFormData({...formData, eventcategory:event.target.value})}}>
+						<option value="" style={{color:"black"}}></option>
 						{leaderboard.categories.map(el => (
-							<option value={el}>{el}</option>
+							<option value={el} style={{color:"black"}}>{el}</option>
 						))}
 					</Form.Select>
 				</Form.Group></Col>
@@ -155,10 +156,15 @@ function App() {
 				</Form.Group></Col>))}
 				
 			</Row>
-			<Row><Col><Form.Group>
+			<Row><Col xs={12} sm={9}><Form.Group>
 				<Form.Label>URL to problem statement PDF</Form.Label>
 				<Form.Control type="text" placeholder="URL" value={formData.link} onChange={(event) => {setFormData({...formData, link:event.target.value})}} />
-			</Form.Group></Col></Row>
+			</Form.Group></Col>
+			<Col xs={12} sm={3}>
+				<Form.Check.Input type="checkbox" checked={formData.resultreleased} onChange={(event) => { setFormData({...formData, resultreleased: event.target.checked})}}/>
+			<p>Result released?</p>
+			</Col>
+			</Row>
 		</Container>
 		<Button onClick={() => {
 			console.log(formData);
@@ -210,10 +216,14 @@ function App() {
 				</Form.Group></Col>))}
 				
 			</Row>
-			<Row><Col><Form.Group>
+			<Row><Col xs={12} sm={9}><Form.Group>
 				<Form.Label>URL to problem statement PDF</Form.Label>
 				<Form.Control type="text" placeholder="URL" value={editSelected.link} onChange={(event) => {setEditSelected({...editSelected, link:event.target.value})}} />
-			</Form.Group></Col></Row>
+			</Form.Group></Col>
+			<Col xs={12} sm={3}>
+			<Form.Check.Input type="checkbox" checked={editSelected.resultreleased} onChange={(event) => { setEditSelected({...editSelected, resultreleased: event.target.checked})}}/>
+			<p>Result released?</p>
+			</Col></Row>
 		</Container>
 		<Button onClick={() => {
 			console.log(editSelected);
@@ -266,10 +276,14 @@ function App() {
 				</Form.Group></Col>))}
 				
 			</Row>
-			<Row><Col><Form.Group>
+			<Row><Col xs={12} sm={9}><Form.Group>
 				<Form.Label>URL to problem statement PDF</Form.Label>
 				<Form.Control type="text" placeholder="URL" value={delSelected.link} />
-			</Form.Group></Col></Row>
+			</Form.Group></Col>
+			<Col xs={12} sm={3}>
+			<Form.Check.Input type="checkbox" checked={delSelected.resultreleased}/>
+			<p>Result released?</p>
+			</Col></Row>
 		</Container>
 		<Button onClick={() => {
 			console.log(delSelected);

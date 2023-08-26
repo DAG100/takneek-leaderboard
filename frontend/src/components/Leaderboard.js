@@ -19,7 +19,8 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 			Peshwas: 0,
 			Shauryas: 0
 		},
-		link: ""
+		link: "",
+		resultreleased: false
 	}
 	const [leaderboard, setLeaderboard] = useState("error");
 // 	const [refresh, setRefresh] = useState(false); //toggle for refreshing
@@ -66,10 +67,11 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 						_id: event._id,
 						eventname: event.eventname, 
 						poolpoints: event.poolpoints,
-						link: event.link === undefined ? "" : event.link
+						link: (event.link === undefined ? "" : event.link),
+						resultreleased: event.resultreleased
 					});
 					for (const pool of pools) {
-						temp_total[pool] += event.poolpoints[pool];
+						temp_total[pool] += event.resultreleased ? event.poolpoints[pool] : 0;
 // 						temp_category_totals[event.eventcategory][pool] += event.poolpoints[pool];
 					}
 				}
@@ -141,7 +143,7 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 									: (<a href={event.link} target="_blank" rel="noreferrer">{event.eventname}</a>)}
 									</Col>
 									{Object.entries(event.poolpoints).map(el => (
-											<Col>{el[1]}</Col>
+											<Col>{event.resultreleased ? el[1] : "-"}</Col>
 										))}
 								</Row>
 					))}

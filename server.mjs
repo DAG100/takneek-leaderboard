@@ -49,7 +49,12 @@ const eventSchema = new mongoose.Schema({
 	link: {
 		type: String, 
 		match: /^http(s)?:\/\/[a-zA-Z0-9.\/-]+$/,
-		required: false}
+		required: false
+	},
+	resultreleased: {
+		type: Boolean,
+		required : true
+	}
 }, {strict: "throw"});
 
 const event_categories = eventSchema.obj.eventcategory.enum;
@@ -99,8 +104,8 @@ app.get("*", (req, res) => {
 
 //after this: password-protected endpoints
 app.post("/*", (request, response, next) => {
-	console.log(request);
-	console.log(request.body);
+// 	console.log(request);
+// 	console.log(request.body);
 	if (request.body.password !== pass) {
 		response.status(400).json(["Invalid request"]);
 		console.log("Password incorrect");
@@ -116,7 +121,8 @@ app.post("/api/add/", async (request, response) => {
 		eventname: request.body.eventname,
 		eventcategory: request.body.eventcategory,
 		poolpoints: request.body.poolpoints,
-		link: request.body.link
+		link: request.body.link,
+		resultreleased: request.body.resultreleased
 	}
 
 	//schema is set up to validate data -> try turning into model straight away
