@@ -17,18 +17,18 @@
 
 
 :root {
-	font-size: 20pt;
+	font-size: 16pt;
 }
 
 @media (max-width: 1200px) {
 	:root {
-		font-size: 18pt;
+		font-size: 13pt;
 	}
 }
 
 @media (max-width: 1000px) {
 	:root {
-		font-size: 16pt;
+		font-size: 10pt;
 	}
 }
 

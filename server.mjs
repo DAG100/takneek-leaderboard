@@ -40,11 +40,11 @@ const eventSchema = new mongoose.Schema({
 	eventname: {type: String, required:true},
 	eventcategory: {type:String, enum: ["Pixel", "Fusion", "Innovate", "Quest", "Insight", "SnT Code"], required: true},
 	poolpoints: {
-		Aryans: {type:Number, required: true},
 		Kshatriyas: {type:Number, required: true},
+		Aryans: {type:Number, required: true},
 		Nawabs: {type:Number, required: true},
+		Shauryas: {type:Number, required: true},
 		Peshwas: {type:Number, required: true},
-		Shauryas: {type:Number, required: true}
 	},
 	link: {
 		type: String, 
