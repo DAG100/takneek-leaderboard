@@ -9,6 +9,8 @@
 	--border-color: #0ff;
 	--background-color-dark: #021826;
 	--background-color-light: #04212f;
+	--border-color-2: #f0f;
+	--background-color-2-dark: #420055;
 	font-variant-caps: small-caps;
 	font-family:"Teko";
 	color:white;
@@ -72,7 +74,7 @@ a {
 	text-align:center;
 	font-variant-caps: normal;
 	text-transform: uppercase;
-	filter: drop-shadow(0px 0px 5px #0ff);
+	filter: drop-shadow(0px 0px 5px var(--border-color));
 }
 
 .container {
@@ -104,7 +106,7 @@ a {
 	border-color: var(--border-color);
 	border-width: var(--border-size);
  	border-radius: var(--border-radius);
- 	color:#0ff;
+ 	color:var(--border-color);
  	margin: 15px;
 /* 
 	border-left: none;
@@ -117,13 +119,17 @@ a {
 	text-align: center;
 }
 
+.ps-category {
+	color: var(--border-color-2);
+}
+
 .row .row {
 	border: none;
 	margin: 0px;
 }
 
 .main > .container > .row {
-	filter: drop-shadow(0 0 var(--border-radius) #0ff);
+	filter: drop-shadow(0 0 var(--border-radius) var(--border-color));
 }
 
 .main > .container > .row:nth-child(2n) {
@@ -137,9 +143,9 @@ a {
 .main > .container > .row:first-child {
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
-	filter: drop-shadow(0 0 var(--border-radius) #d00cfc);
-	background-color: #420055;
-	border-color: #d00cfc;
+	filter: drop-shadow(0 0 var(--border-radius) var(--border-color-2));
+	background-color: var(--background-color-2-dark);
+	border-color: var(--border-color-2);
 	font-variant-caps: small-caps;
 }
 

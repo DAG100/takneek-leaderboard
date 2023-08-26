@@ -122,7 +122,7 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 			</Row>
 			{leaderboard.categories.map(event_category => (
 				<Row>
-					<Col sm={12} md={1} style={{textAlign:"center", color: "#f0f"}}>{event_category}</Col>
+					<Col sm={12} md={1} style={{textAlign:"center"}} className="ps-category">{event_category}</Col>
 					<Col sm={12} md={11} style={{padding: 0}}>
 						<Container style={{width: "100%"}}>
 							{leaderboard.leaderboard[event_category].map(event => (
@@ -152,7 +152,7 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 				</Row>
 			))}
 			<Row>
-				<Col sm={{offset: 0, span:12}} md={{offset: 1, span: 3}} style={{textAlign: "center", color: "#f0f"}}>Total</Col>
+				<Col sm={{offset: 0, span:12}} md={{offset: 1, span: 3}} style={{textAlign: "center"}} className="ps-category">Total</Col>
 				<Col sm={12} md={8} style={{padding:0}}>
 				<Row style={{padding:0}}>
 				{Object.entries(leaderboard.total).map((el, index) => <Col xs={{offset: (index === 0 ? 3 : 0)}} sm={{offset: (index === 0 ? 3 : 0)}} md={{offset: 0}}>{el[1]}</Col>)}
