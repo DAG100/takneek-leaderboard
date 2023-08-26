@@ -9,8 +9,8 @@
 	--border-color: #0ff;
 	--background-color-dark: #021826;
 	--background-color-light: #04212f;
-	--border-color-2: #f0f;
-	--background-color-2-dark: #420055;
+	--border-color-2: #0f0;
+	--background-color-2-dark: #003300;
 	font-variant-caps: small-caps;
 	font-family:"Teko";
 	color:white;
@@ -39,15 +39,15 @@ body {
 }
 
 div {
-	color: #0ff;
+	color: var(--border-color);
 }
 
 a {
-	color: #0ff !important;
+	color: var(--border-color) !important;
 }
 
 .btn {
-	background-color: #112 !important;
+	background-color: var(--background-color-dark) !important;
 	border-color: var(--border-color) !important;
 	color: var(--border-color) !important;
 }
@@ -65,12 +65,12 @@ a {
 }
 
 .main h2 {
-	color:#0ff;
+	color:var(--border-color);
 	text-align:center;
 }
 
 .main h1 {
-	color:#0ff;
+	color:var(--border-color);
 	text-align:center;
 	font-variant-caps: normal;
 	text-transform: uppercase;
@@ -158,7 +158,7 @@ a {
  */
 
 .table-head div {
-	color:#f0f !important;
+	color:var(--border-color-2) !important;
 }
 
 /* 
@@ -168,5 +168,5 @@ a {
  */
 
 .main > .container > .row:first-child > div {
-	color:#f0f;
+	color: var(--border-color-2);
 }
