@@ -3,8 +3,12 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 // import { MongoClient } from "mongodb";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from 'url';
 
 dotenv.config();
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const PORT = process.env.PORT || 5001;
 const pass = process.env.PASS || "test";
@@ -12,14 +16,20 @@ const mongoURL = process.env.MONGO_URL || "";
 const admin_url = process.env.ADMIN_URL;
 const refreshTime = 60*1000; //1 minute in milliseconds
 
-let leaderboard = undefined;
-let prevTime = Date.now();
+// let leaderboard = undefined;
+// let prevTime = Date.now();
 
 console.log(`Port: ${PORT}, mongo URL: ${mongoURL}`);
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+console.log(process.env)
+
+app.use(express.static("frontend-build/assets"));
+app.use("/static", express.static("frontend-build/static"));
+
 
 await mongoose.connect(mongoURL);
 
@@ -30,11 +40,11 @@ const eventSchema = new mongoose.Schema({
 	eventname: {type: String, required:true},
 	eventcategory: {type:String, enum: ["Pixel", "Fusion", "Innovate", "Quest", "Insight", "SnT Code"], required: true},
 	poolpoints: {
-		Kshatriyas: {type:Number, required: true},
 		Aryans: {type:Number, required: true},
+		Kshatriyas: {type:Number, required: true},
 		Nawabs: {type:Number, required: true},
-		Shauryas: {type:Number, required: true},
-		Peshwas: {type:Number, required: true}
+		Peshwas: {type:Number, required: true},
+		Shauryas: {type:Number, required: true}
 	},
 	link: {
 		type: String, 
@@ -53,22 +63,26 @@ const pools_names = Object.keys(eventSchema.obj.poolpoints);
 
 const eventModel = new mongoose.model("Event", eventSchema);
 
-
 app.get("/", (req, res) => {
-	res.send("Test");
-})
+	res.sendFile("index.html", {root: path.join(__dirname,"frontend-build")});
+});
+
+app.get(`/${admin_url}`, (req, res) => {
+	res.sendFile("admin.html", {root: path.join(__dirname,"frontend-build")});
+});
 
 
 app.get("/api/", async (request, response) => {
 	//send leaderboard
-	console.log(Date.now() - prevTime);
-	console.log(prevTime);
-	if (leaderboard === undefined || Date.now() - prevTime > refreshTime) {
-		leaderboard = await eventModel.find({});
-		prevTime = Date.now();
-	}
+// 	console.log(Date.now() - prevTime);
+// 	console.log(prevTime);
+// 	if (leaderboard === undefined || Date.now() - prevTime > refreshTime) {
+// 		leaderboard = await eventModel.find({});
+// 		prevTime = Date.now();
+// 	}
 // 	console.log(leaderboard);
-	response.json(leaderboard);
+// 	response.json(leaderboard);
+	response.json(await eventModel.find({}));
 });
 
 app.get("/api/categories", (req, res) => {
@@ -78,6 +92,10 @@ app.get("/api/categories", (req, res) => {
 app.get("/api/pools", (req, res) => {
 	res.json(pools_names);
 });
+
+app.get("*", (req, res) => {
+	res.status(404).send("404");
+})
 
 //after this: password-protected endpoints
 app.post("/*", (request, response, next) => {
