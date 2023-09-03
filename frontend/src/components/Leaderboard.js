@@ -152,7 +152,7 @@ function App({delSelected, setDelSelected, editSelected, setEditSelected, refres
 				<Col sm={{offset: 0, span:12}} md={{offset: 1, span: 3}} style={{textAlign: "center"}} className="ps-category">Total</Col>
 				<Col sm={12} md={8} style={{padding:0}}>
 				<Row style={{padding:0}}>
-				{Object.entries(leaderboard.total).map((el, index) => <Col xs={{offset: (index === 0 ? 3 : 0)}} sm={{offset: (index === 0 ? 3 : 0)}} md={{offset: 0}}>{el[1]}</Col>)}
+				{Object.entries(leaderboard.total).map((el, index) => <Col xs={{offset: (index === 0 ? 3 : 0)}} sm={{offset: (index === 0 ? 3 : 0)}} md={{offset: 0}}>{el[1].toFixed(2)}</Col>)}
 				</Row></Col>
 			</Row>
 		</Container>
