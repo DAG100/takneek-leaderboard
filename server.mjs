@@ -38,7 +38,7 @@ const eventSchema = new mongoose.Schema({
 	//stored event-wise
 	//edit categories, pool names here
 	eventname: {type: String, required:true},
-	eventcategory: {type:String, enum: ["Pixel", "Fusion", "Innovate", "Quest", "Insight", "SnT Code"], required: true},
+	eventcategory: {type:String, enum: ["Pixel", "Fusion", "Innovate", "Quest", "Insight", "SnT Code", "Penalties"], required: true},
 	poolpoints: {
 		Kshatriyas: {type:Number, required: true},
 		Aryans: {type:Number, required: true},
